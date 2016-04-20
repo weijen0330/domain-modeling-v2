@@ -112,8 +112,16 @@ class MoneyTests: XCTestCase {
     func testPlusAndMinus() {
         let twentyTwoUSD = tenUSD + twelveUSD
         XCTAssert(twentyTwoUSD.description == "USD22")
-        XCTAssert(3.0.GBP.description == "GBP3")
-        XCTAssert(3.0.EUR.description == "EUR3")
+        
+        let twoUSD = twelveUSD - tenUSD
+        XCTAssert(twoUSD.description == "USD2")
+        
+        let twentyUSD = tenUSD + fifteenEUR.convert("USD")
+        XCTAssert(twentyUSD.description == "USD20")
+        
+        let alsoTenUSD = twentyUSD - fiveGBP.convert("USD")
+        XCTAssert(alsoTenUSD.description == "USD10")
+        
     }
 }
 
